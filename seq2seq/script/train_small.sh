@@ -1,4 +1,4 @@
-PY=../py/run.py
+PY=../python/run.py
 MODEL_DIR=../model/model_small
 TRAIN_PATH_FROM=../data/small/train.src
 DEV_PATH_FROM=../data/small/valid.src
