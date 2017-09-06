@@ -110,8 +110,10 @@ FLAGS = tf.app.flags.FLAGS
 # We use a number of buckets and pad to the closest one for efficiency.
 # See seq2seq_model.Seq2SeqModel for details of how they work.
 #_buckets = [(5, 10), (10, 15), (20, 25), (40, 50)]
-_buckets = [(10, 10), (22, 22)]
-_beam_buckets = [10, 22]
+# _buckets = [(10, 10), (22, 22)]
+# _beam_buckets = [10, 22]
+_buckets =buckets = [(120, 30), (200, 35), (300, 40), (400, 41), (500, 42)]
+_beam_buckets = [30,35,40,41,42]
 
 
 def read_data(source_path, target_path, max_size=None):
@@ -278,7 +280,6 @@ def train():
         FLAGS.dev_path_to,
         FLAGS.from_vocab_size,
         FLAGS.to_vocab_size)
-
 
     train_data_bucket = read_data(from_train,to_train)
     dev_data_bucket = read_data(from_dev,to_dev)
