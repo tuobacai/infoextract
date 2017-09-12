@@ -1,3 +1,4 @@
+# coding:utf-8
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -553,7 +554,7 @@ def beam_decode():
         model = create_model(sess, run_options, run_metadata)
         show_all_variables()
 
-        sess.run(model.dropoutRate.assign(1.0))
+        sess.run(model.dropoutRate.assign(1.0))#把droup释放掉
 
         start_id = 0
         n_steps = 0
@@ -661,6 +662,7 @@ def beam_decode():
                     
                 # print the 1 best 
             results = sorted(results, key = lambda x: -x[1])
+
             
             targets.append(results[0][0])
 

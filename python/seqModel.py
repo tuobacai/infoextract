@@ -517,11 +517,11 @@ class SeqModel(object):
                 # two variable: before_state, after_state
                 for i in xrange(self.num_layers):
                     cb = tf.get_variable("before_c_{}".format(i), shape, initializer=tf.constant_initializer(0.0), trainable = False) 
-                    hb = tf.get_variable("before_h_{}".format(i), shape, initializer=tf.constant_initializer(0.0), trainable = False) 
-                    sb = tf.nn.rnn_cell.LSTMStateTuple(cb,hb)
+                    hb = tf.get_variable("before_h_{}".format(i), shape, initializer=tf.constant_initializer(0.0), trainable = False)
+                    sb = tf.contrib.rnn.LSTMStateTuple(cb,hb)
                     ca = tf.get_variable("after_c_{}".format(i), shape, initializer=tf.constant_initializer(0.0), trainable = False) 
                     ha = tf.get_variable("after_h_{}".format(i), shape, initializer=tf.constant_initializer(0.0), trainable = False) 
-                    sa = tf.nn.rnn_cell.LSTMStateTuple(ca,ha)
+                    sa = tf.contrib.rnn.LSTMStateTuple(ca,ha)
                     self.before_state.append(sb)
                     self.after_state.append(sa)                
 
