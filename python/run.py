@@ -65,7 +65,7 @@ tf.app.flags.DEFINE_integer("from_vocab_size", 10000, "from vocabulary size.")
 tf.app.flags.DEFINE_integer("to_vocab_size", 10000, "to vocabulary size.")
 
 tf.app.flags.DEFINE_integer("size", 128, "Size of each model layer.")
-tf.app.flags.DEFINE_integer("num_layers", 1, "Number of layers in the model.")
+tf.app.flags.DEFINE_integer("num_layers", 2, "Number of layers in the model.")
 tf.app.flags.DEFINE_integer("n_epoch", 500,
                             "Maximum number of epochs in training.")
 

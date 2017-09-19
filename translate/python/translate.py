@@ -54,7 +54,7 @@ tf.app.flags.DEFINE_float("max_gradient_norm", 5.0,
 tf.app.flags.DEFINE_integer("batch_size", 64,
                             "Batch size to use during training.")
 tf.app.flags.DEFINE_integer("size", 1024, "Size of each model layer.")
-tf.app.flags.DEFINE_integer("num_layers", 3, "Number of layers in the model.")
+tf.app.flags.DEFINE_integer("num_layers", 2, "Number of layers in the model.")
 tf.app.flags.DEFINE_integer("from_vocab_size", 40000, "English vocabulary size.")
 tf.app.flags.DEFINE_integer("to_vocab_size", 40000, "French vocabulary size.")
 tf.app.flags.DEFINE_string("data_dir", "/tmp", "Data directory")
@@ -80,7 +80,7 @@ FLAGS = tf.app.flags.FLAGS
 # See seq2seq_model.Seq2SeqModel for details of how they work.
 _buckets = [(5, 10), (10, 15), (20, 25), (40, 50)]
 
-
+#step 1:same
 def read_data(source_path, target_path, max_size=None):
   """Read data from source and target files and put into buckets.
 
@@ -118,7 +118,7 @@ def read_data(source_path, target_path, max_size=None):
         source, target = source_file.readline(), target_file.readline()
   return data_set
 
-
+#step 2:diff
 def create_model(session, forward_only):
   """Create translation model and initialize or load parameters in session."""
   dtype = tf.float16 if FLAGS.use_fp16 else tf.float32
@@ -143,7 +143,7 @@ def create_model(session, forward_only):
     session.run(tf.global_variables_initializer())
   return model
 
-
+#step 3:diff
 def train():
   """Train a en->fr translation model using WMT data."""
   from_train = None
@@ -241,7 +241,7 @@ def train():
           print("  eval: bucket %d perplexity %.2f" % (bucket_id, eval_ppx))
         sys.stdout.flush()
 
-
+#step 4:diff
 def decode():
   with tf.Session() as sess:
     # Create model and load parameters.
@@ -289,7 +289,7 @@ def decode():
       sys.stdout.flush()
       sentence = sys.stdin.readline()
 
-
+#step 5:diff
 def self_test():
   """Test the translation model."""
   with tf.Session() as sess:
